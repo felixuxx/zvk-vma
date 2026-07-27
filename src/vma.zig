@@ -98,23 +98,23 @@ pub const AllocationInfo = extern struct {
     pName: ?[*:0]u8,
 };
 
-pub extern fn vmaCreateAllocator(createInfo: *const AllocatorCreateInfo, allocator: ?*?*Allocator) callconv(.c) c_int;
-pub extern fn vmaDestroyAllocator(allocator: ?*Allocator) callconv(.c) void;
+pub extern fn vmaCreateAllocator(createInfo: *const AllocatorCreateInfo, allocator: ?*Allocator) callconv(.c) c_int;
+pub extern fn vmaDestroyAllocator(allocator: Allocator) callconv(.c) void;
 
-pub extern fn vmaCreateBuffer(allocator: ?*Allocator, bufferCreateInfo: *const anyopaque, allocCreateInfo: *const AllocationCreateInfo, buffer: *u64, allocation: ?*?*Allocation, allocationInfo: ?*AllocationInfo) callconv(.c) c_int;
-pub extern fn vmaDestroyBuffer(allocator: ?*Allocator, buffer: u64, allocation: ?*Allocation) callconv(.c) void;
+pub extern fn vmaCreateBuffer(allocator: Allocator, bufferCreateInfo: *const anyopaque, allocCreateInfo: *const AllocationCreateInfo, buffer: *u64, allocation: ?*Allocation, allocationInfo: ?*AllocationInfo) callconv(.c) c_int;
+pub extern fn vmaDestroyBuffer(allocator: Allocator, buffer: u64, allocation: Allocation) callconv(.c) void;
 
-pub extern fn vmaCreateImage(allocator: ?*Allocator, imageCreateInfo: *const anyopaque, allocCreateInfo: *const AllocationCreateInfo, image: *u64, allocation: ?*?*Allocation, allocationInfo: ?*AllocationInfo) callconv(.c) c_int;
-pub extern fn vmaDestroyImage(allocator: ?*Allocator, image: u64, allocation: ?*Allocation) callconv(.c) void;
+pub extern fn vmaCreateImage(allocator: Allocator, imageCreateInfo: *const anyopaque, allocCreateInfo: *const AllocationCreateInfo, image: *u64, allocation: ?*Allocation, allocationInfo: ?*AllocationInfo) callconv(.c) c_int;
+pub extern fn vmaDestroyImage(allocator: Allocator, image: u64, allocation: Allocation) callconv(.c) void;
 
-pub extern fn vmaMapMemory(allocator: ?*Allocator, allocation: ?*Allocation, ppData: ?*?*anyopaque) callconv(.c) c_int;
-pub extern fn vmaUnmapMemory(allocator: ?*Allocator, allocation: ?*Allocation) callconv(.c) void;
+pub extern fn vmaMapMemory(allocator: Allocator, allocation: Allocation, ppData: ?*?*anyopaque) callconv(.c) c_int;
+pub extern fn vmaUnmapMemory(allocator: Allocator, allocation: Allocation) callconv(.c) void;
 
-pub extern fn vmaAllocateMemory(allocator: ?*Allocator, memoryRequirements: *const anyopaque, createInfo: *const AllocationCreateInfo, allocation: ?*?*Allocation, allocationInfo: ?*AllocationInfo) callconv(.c) c_int;
-pub extern fn vmaFreeMemory(allocator: ?*Allocator, allocation: ?*Allocation) callconv(.c) void;
+pub extern fn vmaAllocateMemory(allocator: Allocator, memoryRequirements: *const anyopaque, createInfo: *const AllocationCreateInfo, allocation: ?*Allocation, allocationInfo: ?*AllocationInfo) callconv(.c) c_int;
+pub extern fn vmaFreeMemory(allocator: Allocator, allocation: Allocation) callconv(.c) void;
 
-pub extern fn vmaGetAllocationInfo(allocator: ?*Allocator, allocation: ?*Allocation, allocationInfo: *AllocationInfo) callconv(.c) void;
-pub extern fn vmaSetAllocationName(allocator: ?*Allocator, allocation: ?*Allocation, name: ?[*:0]const u8) callconv(.c) void;
+pub extern fn vmaGetAllocationInfo(allocator: Allocator, allocation: Allocation, allocationInfo: *AllocationInfo) callconv(.c) void;
+pub extern fn vmaSetAllocationName(allocator: Allocator, allocation: Allocation, name: ?[*:0]const u8) callconv(.c) void;
 
-pub extern fn vmaSetCurrentFrameIndex(allocator: ?*Allocator, frameIndex: u32) callconv(.c) void;
-pub extern fn vmaGetAllocatorInfo(allocator: ?*Allocator, allocatorInfo: *anyopaque) callconv(.c) void;
+pub extern fn vmaSetCurrentFrameIndex(allocator: Allocator, frameIndex: u32) callconv(.c) void;
+pub extern fn vmaGetAllocatorInfo(allocator: Allocator, allocatorInfo: *anyopaque) callconv(.c) void;
